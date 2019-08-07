@@ -7,7 +7,8 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
 // Explicit
-
+  final formKey = GlobalKey<FormState>();
+ String nameString,emailString,passwordString;
 // Medtod
   Widget nameText() {
     return TextFormField(
@@ -22,12 +23,19 @@ class _RegisterState extends State<Register> {
         helperText: 'Type Your Name',
         helperStyle: TextStyle(color: Colors.yellow[700]),
         hintText: 'English only',
-      ),
+      ),validator: (String value){
+        if(value .isEmpty){
+          return 'Please Fill Name in Blank';
+        }
+      },onSaved: (String value){
+        nameString = value;
+      },
     );
   }
 
   Widget emailText() {
-    return TextFormField(keyboardType: TextInputType.emailAddress,
+    return TextFormField(
+      keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         icon: Icon(
           Icons.email,
@@ -39,7 +47,13 @@ class _RegisterState extends State<Register> {
         helperText: 'Type Your Email',
         helperStyle: TextStyle(color: Colors.yellow[700]),
         hintText: 'you@mail.com',
-      ),
+      ),validator: (String value){
+        if(!((value.contains('@')) && (value.contains('.')))){
+          return 'Please Keep Format Type Email';
+        }
+      },onSaved: (String value){
+        emailString = value;
+      },
     );
   }
 
@@ -56,14 +70,23 @@ class _RegisterState extends State<Register> {
         helperText: 'Type Your Password',
         helperStyle: TextStyle(color: Colors.yellow[700]),
         hintText: 'More 6 Character',
-      ),
+      ),validator: (String value){
+        if(value.length < 6){
+          return 'Please More 6 Character';
+        }
+      },onSaved: (String value){
+        passwordString = value;
+      },
     );
   }
 
   Widget groupText() {
-    return ListView(
-      padding: EdgeInsets.only(top: 80.0, left: 50.0, right: 50.0),
-      children: <Widget>[nameText(), emailText(), passwordText()],
+    return Form(
+      key: formKey,
+      child: ListView(
+        padding: EdgeInsets.only(top: 80.0, left: 50.0, right: 50.0),
+        children: <Widget>[nameText(), emailText(), passwordText()],
+      ),
     );
   }
 
@@ -71,7 +94,15 @@ class _RegisterState extends State<Register> {
     return IconButton(
       tooltip: 'Register Firebase',
       icon: Icon(Icons.cloud_upload),
-      onPressed: () {},
+      iconSize: 36.0,
+      onPressed: () {
+        
+         if (formKey.currentState.validate()) {
+           formKey.currentState.save();
+           print('name = $nameString,email=$emailString,password=$passwordString');
+         } 
+
+      },
     );
   }
 
@@ -84,6 +115,7 @@ class _RegisterState extends State<Register> {
         actions: <Widget>[registerButton()],
       ),
       body: groupText(),
+      
     );
   }
 }

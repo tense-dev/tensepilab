@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "671805433217",
+    "firebase_url": "https://tensepilab.firebaseio.com",
+    "project_id": "tensepilab",
+    "storage_bucket": "tensepilab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671805433217:android:59769af9a534f945",
+        "android_client_info": {
+          "package_name": "com.andriodstudio.tense_pilab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "671805433217-je562ff1ae1enke9r0r1baki8t4h7fql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALw-LbhtQzZGNqDEsc88VnCF5woBDzDhY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "671805433217-je562ff1ae1enke9r0r1baki8t4h7fql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
