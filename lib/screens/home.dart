@@ -1,6 +1,8 @@
 //Scaffold ดึงตรีม
 // Column(children: <Widget>[showAppName(),showAppName()],), //viewgroup
 import 'package:flutter/material.dart';
+import 'package:tense_pilab/screens/authen.dart';
+import 'package:tense_pilab/screens/register.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -27,7 +29,10 @@ class _HomeState extends State<Home> {
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
         color: myColorButton,
-        onPressed: () {},
+        onPressed: () {
+          var registerRoute = MaterialPageRoute(builder: (BuildContext context) => Register());
+          Navigator.of(context).push(registerRoute);
+        },
       ),
     );
   }
@@ -45,7 +50,12 @@ class _HomeState extends State<Home> {
             color: Colors.white,
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          print('Printttttttttttttttttttttttttttttttt');
+          var authenRoute =
+              MaterialPageRoute(builder: (BuildContext context) => Authen());
+          Navigator.of(context).push(authenRoute);
+        },
       ),
     );
   }
